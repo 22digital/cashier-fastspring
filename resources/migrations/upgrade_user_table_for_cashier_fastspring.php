@@ -13,7 +13,7 @@ class UpgradeUserTableForCashierFastspring extends Migration
      */
     public function up()
     {
-        Schema::table('users', function($table) {
+        Schema::table('users', function ($table) {
             $table->string('fastspring_id')->nullable();
             $table->string('company')->nullable();
             $table->string('phone')->nullable();
@@ -29,7 +29,7 @@ class UpgradeUserTableForCashierFastspring extends Migration
      */
     public function down()
     {
-        Schema::table('users', function(Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             $table->dropColumn(['fastspring_id', 'company', 'phone', 'language', 'country']);
         });
     }

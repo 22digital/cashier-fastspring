@@ -2,8 +2,6 @@
 
 namespace TwentyTwoDigital\CashierFastspring\Http\Controllers;
 
-use TwentyTwoDigital\CashierFastspring\Events;
-use TwentyTwoDigital\CashierFastspring\Fastspring\Fastspring;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -11,6 +9,8 @@ use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Str;
 use Log;
 use Symfony\Component\HttpFoundation\Response;
+use TwentyTwoDigital\CashierFastspring\Events;
+use TwentyTwoDigital\CashierFastspring\Fastspring\Fastspring;
 
 class WebhookController extends Controller
 {
@@ -69,7 +69,7 @@ class WebhookController extends Controller
             try {
                 // check if the related event classes are exist
                 // there may be not handled events
-                if (!class_exists($categoryEvent) || !class_exists($activityEvent)) {
+                if (! class_exists($categoryEvent) || ! class_exists($activityEvent)) {
                     throw new Exception('There is no event for '.$event['type']);
                 }
 

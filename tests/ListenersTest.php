@@ -2,6 +2,8 @@
 
 namespace TwentyTwoDigital\CashierFastspring\Tests;
 
+use Illuminate\Database\Eloquent\Model as Eloquent;
+use Orchestra\Testbench\TestCase;
 use TwentyTwoDigital\CashierFastspring\Events;
 use TwentyTwoDigital\CashierFastspring\Fastspring\Fastspring;
 use TwentyTwoDigital\CashierFastspring\Invoice;
@@ -9,8 +11,6 @@ use TwentyTwoDigital\CashierFastspring\Listeners;
 use TwentyTwoDigital\CashierFastspring\Subscription;
 use TwentyTwoDigital\CashierFastspring\Tests\Traits\Database;
 use TwentyTwoDigital\CashierFastspring\Tests\Traits\Model;
-use Illuminate\Database\Eloquent\Model as Eloquent;
-use Orchestra\Testbench\TestCase;
 
 class ListenersTest extends TestCase
 {

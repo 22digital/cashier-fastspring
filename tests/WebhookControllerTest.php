@@ -2,13 +2,13 @@
 
 namespace TwentyTwoDigital\CashierFastspring\Tests;
 
-use TwentyTwoDigital\CashierFastspring\Events;
-use TwentyTwoDigital\CashierFastspring\Tests\Fixtures\WebhookControllerTestStub;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Str;
 use Orchestra\Testbench\TestCase;
+use TwentyTwoDigital\CashierFastspring\Events;
+use TwentyTwoDigital\CashierFastspring\Tests\Fixtures\WebhookControllerTestStub;
 
 class WebhookControllerTest extends TestCase
 {

@@ -2,17 +2,17 @@
 
 namespace TwentyTwoDigital\CashierFastspring\Tests;
 
+use Exception;
+use GuzzleHttp\Middleware;
+use GuzzleHttp\Psr7\Response;
+use Illuminate\Database\Eloquent\Model as Eloquent;
+use Orchestra\Testbench\TestCase;
 use TwentyTwoDigital\CashierFastspring\Billable;
 use TwentyTwoDigital\CashierFastspring\Exceptions\NotImplementedException;
 use TwentyTwoDigital\CashierFastspring\SubscriptionBuilder;
 use TwentyTwoDigital\CashierFastspring\Tests\Traits\Database;
 use TwentyTwoDigital\CashierFastspring\Tests\Traits\Guzzle;
 use TwentyTwoDigital\CashierFastspring\Tests\Traits\Model;
-use Exception;
-use GuzzleHttp\Middleware;
-use GuzzleHttp\Psr7\Response;
-use Illuminate\Database\Eloquent\Model as Eloquent;
-use Orchestra\Testbench\TestCase;
 
 /**
  * This class tests general process of cashier over Billable trait.

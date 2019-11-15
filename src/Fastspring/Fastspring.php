@@ -28,7 +28,7 @@ class Fastspring
     {
         // if there is not any constructed instance
         // construct and save it to self::$instance
-        if (!self::$instance) {
+        if (! self::$instance) {
             $username = (getenv('FASTSPRING_USERNAME') ?: config('services.fastspring.username'));
             $password = (getenv('FASTSPRING_PASSWORD') ?: config('services.fastspring.password'));
 

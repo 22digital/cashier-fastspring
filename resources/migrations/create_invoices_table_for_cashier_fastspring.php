@@ -13,7 +13,7 @@ class CreateInvoicesTableForCashierFastspring extends Migration
      */
     public function up()
     {
-        Schema::create('invoices', function(Blueprint $table) {
+        Schema::create('invoices', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
             $table->string('fastspring_id')->nullable();

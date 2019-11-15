@@ -13,7 +13,7 @@ class CreateSubscriptionPeriodsTableForCashierFastspring extends Migration
      */
     public function up()
     {
-        Schema::create('subscription_periods', function(Blueprint $table) {
+        Schema::create('subscription_periods', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('subscription_id');
 

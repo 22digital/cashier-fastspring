@@ -2,8 +2,8 @@
 
 namespace TwentyTwoDigital\CashierFastspring\Tests;
 
-use TwentyTwoDigital\CashierFastspring\Exceptions\NotImplementedException;
 use Orchestra\Testbench\TestCase;
+use TwentyTwoDigital\CashierFastspring\Exceptions\NotImplementedException;
 
 class ExceptionsTest extends TestCase
 {

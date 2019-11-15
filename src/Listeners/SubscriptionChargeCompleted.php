@@ -2,11 +2,11 @@
 
 namespace TwentyTwoDigital\CashierFastspring\Listeners;
 
+use Carbon\Carbon;
+use Illuminate\Support\Str;
 use TwentyTwoDigital\CashierFastspring\Events;
 use TwentyTwoDigital\CashierFastspring\Invoice;
 use TwentyTwoDigital\CashierFastspring\Subscription;
-use Carbon\Carbon;
-use Illuminate\Support\Str;
 
 /**
  * This class is a listener for subscription charge completed events.

@@ -2,12 +2,12 @@
 
 namespace TwentyTwoDigital\CashierFastspring\Tests;
 
-use TwentyTwoDigital\CashierFastspring\Fastspring\ApiClient;
-use TwentyTwoDigital\CashierFastspring\Fastspring\Fastspring;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use Orchestra\Testbench\TestCase;
+use TwentyTwoDigital\CashierFastspring\Fastspring\ApiClient;
+use TwentyTwoDigital\CashierFastspring\Fastspring\Fastspring;
 
 /**
  * This class just tests if fastspring class works as php code and receive mocked responses.

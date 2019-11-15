@@ -2,14 +2,14 @@
 
 namespace TwentyTwoDigital\CashierFastspring\Tests;
 
-use TwentyTwoDigital\CashierFastspring\Subscription;
-use TwentyTwoDigital\CashierFastspring\Tests\Traits\Database;
-use TwentyTwoDigital\CashierFastspring\Tests\Traits\Guzzle;
-use TwentyTwoDigital\CashierFastspring\Tests\Traits\Model;
 use Carbon\Carbon;
 use GuzzleHttp\Psr7\Response;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 use Orchestra\Testbench\TestCase;
+use TwentyTwoDigital\CashierFastspring\Subscription;
+use TwentyTwoDigital\CashierFastspring\Tests\Traits\Database;
+use TwentyTwoDigital\CashierFastspring\Tests\Traits\Guzzle;
+use TwentyTwoDigital\CashierFastspring\Tests\Traits\Model;
 
 class SubscriptionTest extends TestCase
 {

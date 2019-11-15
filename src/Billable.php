@@ -2,9 +2,9 @@
 
 namespace TwentyTwoDigital\CashierFastspring;
 
+use Exception;
 use TwentyTwoDigital\CashierFastspring\Exceptions\NotImplementedException;
 use TwentyTwoDigital\CashierFastspring\Fastspring\Fastspring;
-use Exception;
 
 trait Billable
 {
@@ -140,7 +140,7 @@ trait Billable
     {
         $subscription = $this->subscription($subscription);
 
-        if (!$subscription || !$subscription->valid()) {
+        if (! $subscription || ! $subscription->valid()) {
             return false;
         }
 
@@ -162,7 +162,7 @@ trait Billable
      */
     public function onPlan($plan)
     {
-        return !is_null($this->subscriptions->first(function ($value) use ($plan) {
+        return ! is_null($this->subscriptions->first(function ($value) use ($plan) {
             return $value->plan === $plan && $value->valid();
         }));
     }
@@ -174,7 +174,7 @@ trait Billable
      */
     public function hasFastspringId()
     {
-        return !is_null($this->fastspring_id);
+        return ! is_null($this->fastspring_id);
     }
 
     /**
@@ -233,7 +233,7 @@ trait Billable
     {
         // check the fastspring_id first
         // if there is non, no need to try
-        if (!$this->hasFastspringId()) {
+        if (! $this->hasFastspringId()) {
             throw new Exception('User has no fastspring_id');
         }
 
@@ -264,7 +264,7 @@ trait Billable
     {
         // check the fastspring_id first
         // if there is non, no need to try
-        if (!$this->hasFastspringId()) {
+        if (! $this->hasFastspringId()) {
             throw new Exception('User has no fastspring_id');
         }
 

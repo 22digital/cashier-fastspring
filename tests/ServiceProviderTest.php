@@ -2,8 +2,8 @@
 
 namespace TwentyTwoDigital\CashierFastspring\Tests;
 
-use TwentyTwoDigital\CashierFastspring\CashierServiceProvider;
 use Orchestra\Testbench\TestCase;
+use TwentyTwoDigital\CashierFastspring\CashierServiceProvider;
 
 class ServiceProviderTest extends TestCase
 {

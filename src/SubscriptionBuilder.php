@@ -2,8 +2,8 @@
 
 namespace TwentyTwoDigital\CashierFastspring;
 
-use TwentyTwoDigital\CashierFastspring\Fastspring\Fastspring;
 use GuzzleHttp\Exception\ClientException;
+use TwentyTwoDigital\CashierFastspring\Fastspring\Fastspring;
 
 class SubscriptionBuilder
 {
@@ -105,7 +105,7 @@ class SubscriptionBuilder
      */
     protected function getFastspringIdOfCustomer()
     {
-        if (!$this->owner->fastspring_id) {
+        if (! $this->owner->fastspring_id) {
             try {
                 $customer = $this->owner->createAsFastspringCustomer();
             } catch (ClientException $e) {

@@ -2,13 +2,11 @@
 
 namespace TwentyTwoDigital\CashierFastspring\Tests;
 
-use TwentyTwoDigital\CashierFastspring\Subscription;
+use Illuminate\Database\Eloquent\Model as Eloquent;
+use Orchestra\Testbench\TestCase;
 use TwentyTwoDigital\CashierFastspring\Tests\Fixtures\User;
 use TwentyTwoDigital\CashierFastspring\Tests\Traits\Database;
 use TwentyTwoDigital\CashierFastspring\Tests\Traits\Model;
-use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Model as Eloquent;
-use Orchestra\Testbench\TestCase;
 
 class InvoiceTest extends TestCase
 {

@@ -45,7 +45,7 @@ class SubscriptionActivated extends Base
 
         $subscription = $user->subscription();
 
-        if (!$subscription) {
+        if (! $subscription) {
             $subscription = new Subscription();
             $subscription->user_id = $user->id;
             $subscription->name = $subscriptionName;

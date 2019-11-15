@@ -2,9 +2,9 @@
 
 namespace TwentyTwoDigital\CashierFastspring\Tests\Traits;
 
-use TwentyTwoDigital\CashierFastspring\Fastspring\Fastspring;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
+use TwentyTwoDigital\CashierFastspring\Fastspring\Fastspring;
 
 trait Guzzle
 {
