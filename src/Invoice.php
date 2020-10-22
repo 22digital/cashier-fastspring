@@ -56,7 +56,7 @@ class Invoice extends Model
      */
     public function owner()
     {
-        $model = getenv('FASTSPRING_MODEL') ?: config('services.fastspring.model', 'App\\User');
+        $model = $_ENV['FASTSPRING_MODEL'] ?: config('services.fastspring.model', 'App\\User');
 
         $model = new $model();
 

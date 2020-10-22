@@ -25,7 +25,7 @@ class Base
      */
     public function getUserByFastspringId($fastspringId)
     {
-        $model = getenv('FASTSPRING_MODEL') ?: config('services.fastspring.model');
+        $model = $_ENV['FASTSPRING_MODEL'] ?: config('services.fastspring.model');
 
         return (new $model())->where('fastspring_id', $fastspringId)->first();
     }

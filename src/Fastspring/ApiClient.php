@@ -78,10 +78,10 @@ class ApiClient
     {
         $this->username = $username
             ? $username
-            : (getenv('FASTSPRING_USERNAME') ?: config('services.fastspring.username'));
+            : ($_ENV['FASTSPRING_USERNAME'] ?: config('services.fastspring.username'));
         $this->password = $password
             ? $password
-            : (getenv('FASTSPRING_PASSWORD') ?: config('services.fastspring.password'));
+            : ($_ENV['FASTSPRING_PASSWORD'] ?: config('services.fastspring.password'));
     }
 
     /**

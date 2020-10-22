@@ -17,10 +17,10 @@ class FastspringTest extends TestCase
 {
     public $fastspring;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         if (file_exists(__DIR__ . '/.env')) {
-            $dotenv = \Dotenv\Dotenv::create(__DIR__);
+            $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__);
             $dotenv->load();
         }
     }

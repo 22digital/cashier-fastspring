@@ -39,8 +39,8 @@ class Fastspring
     public static function __callStatic($method, $parameters)
     {
         if (!self::$instance) {
-            $username = (getenv('FASTSPRING_USERNAME') ?: config('services.fastspring.username'));
-            $password = (getenv('FASTSPRING_PASSWORD') ?: config('services.fastspring.password'));
+            $username = ($_ENV['FASTSPRING_USERNAME'] ?: config('services.fastspring.username'));
+            $password = ($_ENV['FASTSPRING_PASSWORD'] ?: config('services.fastspring.password'));
 
             self::$instance = new ApiClient($username, $password);
         }

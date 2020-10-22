@@ -17,10 +17,10 @@ class SubscriptionTest extends TestCase
     use Model;
     use Guzzle;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         if (file_exists(__DIR__.'/.env')) {
-            $dotenv = \Dotenv\Dotenv::create(__DIR__);
+            $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__);
             $dotenv->load();
         }
     }
@@ -564,7 +564,7 @@ class SubscriptionTest extends TestCase
         $subscription = $this->createSubscription($user, ['fastspring_id' => 'fastspring_id']);
 
         $response = $subscription->resume();
-        $this->assertInternalType('object', $response);
+        $this->assertIsObject($response);
         $this->assertObjectHasAttribute('subscription', $response->subscriptions[0]);
     }
 
