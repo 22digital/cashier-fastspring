@@ -91,7 +91,7 @@ After publishing them, you can find migration files in your `database/migrations
 Next, add the Billable trait to your model definition. This trait provides various methods to allow you to perform common billing tasks, such as creating and checking subscriptions, getting orders etc.
 
 ```php
-use Laravel\Cashier\Billable;
+use TwentyTwoDigital\CashierFastspring\Billable;
 
 class User extends Authenticatable
 {
@@ -108,7 +108,6 @@ You should add Fastspring configuration to `config/services.php` file.
     'model' => App\User::class,
     'username' => env('FASTSPRING_USERNAME'),
     'password' => env('FASTSPRING_PASSWORD'),
-    'store_id' => env('FASTSPRING_STORE_ID'),
 
     // strongly recommend to set hmac secret in webhook configuration
     // to prevent webhook spoofing
@@ -121,10 +120,9 @@ You should add Fastspring configuration to `config/services.php` file.
 Fastspring can notify your application of a variety of events via webhooks. To handle webhooks, define a route and also set it in Fastspring settings.
 
 ```php
-Route::post(
-    'fastspring/webhook',
-    '\TwentyTwoDigital\CashierFastspring\Http\Controllers\WebhookController@handleWebhook'
-)->name('fastspringWebhook');
+use TwentyTwoDigital\CashierFastspring\Http\Controllers\WebhookController;
+
+Route::post('/webhook/fastspring', [WebhookController::class, 'handleWebhook'])->name('webhook.fastspring');
 ```
 
 #### Webhooks & CSRF Protection
@@ -150,26 +148,37 @@ Remember that you can create and use your listeners and database structure accor
 In Cashier Fastspring, every webhook request fires related events. You can register listeners to webhook events in `app/providers/EventServiceProvider.php`. You can see more at [Webhooks](#webhooks).
 
 ```php
+use TwentyTwoDigital\CashierFastspring\Events\OrderCompleted;
+use TwentyTwoDigital\CashierFastspring\Events\SubscriptionActivated;
+use TwentyTwoDigital\CashierFastspring\Events\SubscriptionCanceled;
+use TwentyTwoDigital\CashierFastspring\Events\SubscriptionChargeCompleted;
+use TwentyTwoDigital\CashierFastspring\Events\SubscriptionDeactivated;
+use TwentyTwoDigital\CashierFastspring\Events\SubscriptionPaymentOverdue;
+use TwentyTwoDigital\CashierFastspring\Listeners\OrderCompleted as OrderCompletedListener;
+use TwentyTwoDigital\CashierFastspring\Listeners\SubscriptionChargeCompleted as SubscriptionChargeCompletedListener;
+use TwentyTwoDigital\CashierFastspring\Listeners\SubscriptionDeactivated as SubscriptionDeactivatedListener;
+use TwentyTwoDigital\CashierFastspring\Listeners\SubscriptionStateChanged;
+
 protected $listen = [
     // some others
-    'TwentyTwoDigital\CashierFastspring\Events\SubscriptionCanceled' => [
-        'TwentyTwoDigital\CashierFastspring\Listeners\SubscriptionStateChanged'
+    SubscriptionCanceled::class => [
+        SubscriptionStateChanged::class,
     ],
-    'TwentyTwoDigital\CashierFastspring\Events\SubscriptionDeactivated' => [
-        'TwentyTwoDigital\CashierFastspring\Listeners\SubscriptionDeactivated'
+    SubscriptionDeactivated::class => [
+        SubscriptionDeactivatedListener::class,
     ],
-    'TwentyTwoDigital\CashierFastspring\Events\SubscriptionPaymentOverdue' => [
-        'TwentyTwoDigital\CashierFastspring\Listeners\SubscriptionStateChanged'
+    SubscriptionPaymentOverdue::class => [
+        SubscriptionStateChanged::class,
     ],
-    'TwentyTwoDigital\CashierFastspring\Events\OrderCompleted' => [
-        'TwentyTwoDigital\CashierFastspring\Listeners\OrderCompleted'
+    OrderCompleted::class => [
+        OrderCompletedListener::class,
     ],
-    'TwentyTwoDigital\CashierFastspring\Events\SubscriptionActivated' => [
-        'TwentyTwoDigital\CashierFastspring\Listeners\SubscriptionActivated'
+    SubscriptionActivated::class => [
+        SubscriptionActivatedListener::class,
     ],
-    'TwentyTwoDigital\CashierFastspring\Events\SubscriptionChargeCompleted' => [
-        'TwentyTwoDigital\CashierFastspring\Listeners\SubscriptionChargeCompleted'
-    ]
+    SubscriptionChargeCompleted::class => [
+        SubscriptionChargeCompletedListener::class,
+    ],
 ];
 ```
 
